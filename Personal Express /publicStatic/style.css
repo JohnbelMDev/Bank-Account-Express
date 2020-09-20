@@ -1,0 +1,35 @@
+body{
+  background-color: green;
+}
+.bankSection{
+  width: 50%;
+  margin-left: 30%;
+  margin-top: 10%;
+  /* line-height: 9em; */
+  background-color: white;
+  /* display: inline-block; */
+}
+h2{
+text-align: center;
+}
+p{
+  text-align: center;
+  
+}
+input{
+  display: block;
+  width: 30%;
+  height: 1.3rem;
+  margin-left: 40%;
+  border: 5px solid blue;
+}
+button{
+  display: block;
+  background-color: green;
+  color: white;
+  /* line-height: 3em; */
+  width: 33%;
+  margin-left: 40%;
+
+
+}

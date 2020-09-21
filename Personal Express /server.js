@@ -57,6 +57,19 @@ MongoClient.connect(DATABASE_URI, {
         .catch(error => console.log(error))
     })
 
+
+
+
+    // app.delete('/deleteAction', (req, res) => {
+    //     // defining name
+    //     db.collection('user').remove({
+    //       _id: new mongoose.mongo.ObjectID(req.body.id),
+    //       }, (err, result) => {
+    //       if (err) return console.log(err)
+    //       console.log('saved to database')
+    //       res.send('deleted')
+    //     })
+    //   })
     //SET ROUTES FOR API -- //getData , withdrawl, deposit
     app.get('/getData', (req, res) => {
       // conver the data into an array
@@ -68,7 +81,7 @@ MongoClient.connect(DATABASE_URI, {
         .catch(error => console.error(error))
     })
 
-    app.get('/deposit', (req, res) => {
+    app.post('/deposit', (req, res) => {
       console.log(parseInt(req.query.amount));
       postCollection.findOneAndUpdate({
           name: 'Johnbel'

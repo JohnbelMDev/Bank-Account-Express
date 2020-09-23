@@ -41,8 +41,6 @@ MongoClient.connect(DATABASE_URI, {
       //to render the ejs file
 			// the app. get the path and then response to render
       res.render(path.join(__dirname, 'views', 'index'), {
-        'title': 'main',
-        // 'thelist': list
       });
     })
 
@@ -82,14 +80,14 @@ MongoClient.connect(DATABASE_URI, {
     })
 
     app.post('/deposit', (req, res) => {
-      console.log(parseInt(req.query.amount));
+      console.log(parseInt(req.body.amount));
       postCollection.findOneAndUpdate({
           name: 'Johnbel'
         }, {
           // The set operator is there for the update operators
           $set: {
-            name: req.query.name,
-            balance: parseInt(req.query.amount)
+            name: 'Johnbel',
+            balance: parseInt(req.body.amount)
           }
         }, {
           // upset means insert a document if no documents can be updated
@@ -102,15 +100,27 @@ MongoClient.connect(DATABASE_URI, {
       res.redirect('/')
     })
 // removing element in the collection
-    app.delete('/delete', (req, res) => {
-      postCollection.deleteOne({
-          name: 'Johnbel'
-        })
-        .then(result => {
-          res.json(`Deleted`)
-        })
-        .catch(error => console.error(error))
-    })
+    // app.delete('/delete', (req, res) => {
+    //   postCollection.deleteOne({
+    //       name: req.body.name
+    //     })
+    //     .then(result => {
+    //       res.json(`Deleted`)
+    //     })
+    //     .catch(error => console.error(error))
+    // })
+
+    app.delete('/delete',(req,responce) =>{
+// console.log(req.body.id);
+  db.collection('user').findOneAndDelete({
+    name:"Johnbel",
+    }, (err, result) => {
+    if (err) return console.log(err)
+    console.log('saved to databassssse')
+    responce.json({message:"succes"})
+  })
+
+});
 
 
 
